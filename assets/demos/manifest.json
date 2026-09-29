@@ -111,7 +111,7 @@
     "id": "navigation-01",
     "category": "navigation",
     "category_label": "Pure navigation",
-    "label": "Navigate to the front of the TV cabinet",
+    "label": "Navigate to the front of the water dispenser",
     "platform": "AGX",
     "video": "https://huggingface.co/datasets/KeliangLiu2025/UniWAM/resolve/main/assets/demos/navigation/navigation-01.mp4",
     "poster": "assets/demos/navigation/navigation-01.jpg"
