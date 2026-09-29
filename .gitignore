@@ -1,0 +1,6 @@
+# Full-length source demos are hosted on Hugging Face, not in GitHub Pages.
+assets/demos/**/*.mp4
+assets/demos/**/*.mov
+
+# Local macOS metadata.
+.DS_Store

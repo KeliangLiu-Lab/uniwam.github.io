@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0e13">
+  <meta name="description" content="UniWAM: Unified Mobile Manipulation via Mixed-Stream World-Action Modeling and Manipulation Anchor Pose Supervision.">
+  <link rel="canonical" href="https://uniwam.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://uniwam.github.io/">
+  <meta property="og:title" content="UniWAM: Unified Mobile Manipulation via Mixed-Stream World-Action Modeling and Manipulation Anchor Pose Supervision">
+  <meta property="og:description" content="UniWAM is a unified mixed-stream world-action model for mobile manipulation, with MAP-Data and MAP-Bench.">
+  <meta property="og:image" content="https://uniwam.github.io/assets/hi/real_world_visualization.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>UniWAM: Unified Mobile Manipulation via Mixed-Stream World-Action Modeling and Manipulation Anchor Pose Supervision</title>
+  <link rel="icon" type="image/png" href="assets/report/uniwam-logo-transparent.png">
+  <link rel="stylesheet" href="styles.css?v=20260929-1">
+</head>
+<body>
+  <header class="site-nav" id="top">
+    <a class="brand" href="#top" aria-label="UniWAM home">
+      <img src="assets/report/uniwam-logo-transparent.png" alt="UniWAM">
+    </a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#approach">Approach</a>
+      <a href="#map">MAP-Data</a>
+      <a href="#demos">Demos</a>
+      <a href="#results">Results</a>
+      <a href="#authors">Authors</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-link" href="assets/papers/UniWAM_Technical_Report.pdf" target="_blank" rel="noreferrer">Paper PDF <span aria-hidden="true">&#8599;</span></a>
+      <a class="nav-pill" href="https://github.com/Fysics-AI/UniWAM" target="_blank" rel="noreferrer">Code <span aria-hidden="true">&#8599;</span></a>
+      <a class="nav-link" href="https://huggingface.co/datasets/KeliangLiu2025/UniWAM" target="_blank" rel="noreferrer">Data <span aria-hidden="true">&#8599;</span></a>
+      <a class="nav-link" href="https://huggingface.co/Fysics-AI/MAP-Bench" target="_blank" rel="noreferrer">MAP-Bench <span aria-hidden="true">&#8599;</span></a>
+    </div>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button>
+  </header>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#approach">Approach</a>
+    <a href="#map">MAP-Data</a>
+    <a href="#demos">Demos</a>
+    <a href="#results">Results</a>
+    <a href="#authors">Authors</a>
+    <a href="assets/papers/UniWAM_Technical_Report.pdf" target="_blank" rel="noreferrer">Paper PDF &#8599;</a>
+    <a href="https://arxiv.org/" target="_blank" rel="noreferrer" title="ArXiv identifier will be added when available">arXiv (coming soon) &#8599;</a>
+    <a href="https://github.com/Fysics-AI/UniWAM" target="_blank" rel="noreferrer">GitHub Code Repository &#8599;</a>
+    <a href="https://huggingface.co/datasets/KeliangLiu2025/UniWAM" target="_blank" rel="noreferrer">Hugging Face Dataset &#8599;</a>
+    <a href="https://huggingface.co/Fysics-AI/MAP-Bench" target="_blank" rel="noreferrer">Hugging Face MAP-Bench &#8599;</a>
+  </div>
+
+  <main>
+    <section class="hero section-pad" aria-labelledby="hero-title">
+      <div class="resource-banner container" aria-label="Project resources">
+        <span class="resource-label">PROJECT RESOURCES</span>
+        <div class="resource-links">
+          <a class="resource-link resource-link-primary resource-link-pdf" href="assets/papers/UniWAM_Technical_Report.pdf" target="_blank" rel="noreferrer" aria-label="Open the UniWAM paper PDF">
+            <span class="resource-icon resource-icon-paper"><span class="pdf-mark" aria-hidden="true">PDF</span></span><span class="resource-copy"><strong>Paper PDF</strong><small>full technical report</small></span><b aria-hidden="true">&#8599;</b>
+          </a>
+          <a class="resource-link resource-link-muted" href="https://arxiv.org/" target="_blank" rel="noreferrer" title="ArXiv identifier will be added when available" aria-label="Open the UniWAM arXiv page">
+            <span class="resource-icon resource-icon-arxiv"><img src="assets/icons/arxiv.svg?v=20260929-1" alt="arXiv logo" width="32" height="32"></span><span class="resource-copy"><strong>arXiv</strong><small>identifier pending</small></span><b aria-hidden="true">&#8599;</b>
+          </a>
+          <a class="resource-link" href="https://github.com/Fysics-AI/UniWAM" target="_blank" rel="noreferrer" aria-label="Open the UniWAM GitHub code repository">
+            <span class="resource-icon resource-icon-github"><img src="assets/icons/github.svg?v=20260929-1" alt="GitHub logo" width="32" height="32"></span><span class="resource-copy"><strong>Code</strong><small>GitHub repository</small></span><b aria-hidden="true">&#8599;</b>
+          </a>
+          <a class="resource-link" href="https://huggingface.co/datasets/KeliangLiu2025/UniWAM" target="_blank" rel="noreferrer" aria-label="Open the UniWAM Hugging Face dataset">
+            <span class="resource-icon resource-icon-hf"><img src="assets/icons/huggingface.svg?v=20260929-1" alt="Hugging Face logo" width="32" height="32"></span><span class="resource-copy"><strong>Dataset</strong><small>Hugging Face</small></span><b aria-hidden="true">&#8599;</b>
+          </a>
+          <a class="resource-link" href="https://huggingface.co/Fysics-AI/MAP-Bench" target="_blank" rel="noreferrer" aria-label="Open the UniWAM MAP-Bench Hugging Face page">
+            <span class="resource-icon resource-icon-hf"><img src="assets/icons/huggingface.svg?v=20260929-1" alt="Hugging Face logo" width="32" height="32"></span><span class="resource-copy"><strong>MAP-Bench</strong><small>Hugging Face</small></span><b aria-hidden="true">&#8599;</b>
+          </a>
+        </div>
+      </div>
+      <div class="hero-inner container">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> FUDAN UNIVERSITY / FYSICS AI</div>
+          <h1 id="hero-title">UniWAM.<br><span>Unified mobile manipulation.</span></h1>
+          <p class="hero-lede">Unified Mobile Manipulation via Mixed-Stream World-Action Modeling and Manipulation Anchor Pose Supervision.</p>
+          <div class="hero-authors" id="authors"><strong>Wei Xue &middot; Keliang Liu</strong><span>Equal contribution; order decided by a coin flip.</span></div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#demos">Watch the robot <span aria-hidden="true">&#8595;</span></a>
+            <a class="button button-quiet" href="#approach">Explore the method <span aria-hidden="true">&#8594;</span></a>
+          </div>
+          <div class="hero-meta"><span>Fudan University &middot; Fysics AI</span><span class="meta-separator"></span><span>Technical report</span></div>
+        </div>
+
+        <div class="hero-stage reveal delay-1">
+          <div class="stage-topline"><span>MOBILE MANIPULATION / REAL ROBOT</span><span class="live-dot"><i></i> LIVE LOOP</span></div>
+          <div class="hero-video-frame">
+            <video autoplay muted loop playsinline poster="assets/demo-manip.jpg" aria-label="UniWAM mobile manipulation demonstration">
+              <source src="assets/demo-manip.mp4" type="video/mp4">
+            </video>
+            <div class="video-scanline"></div>
+            <div class="stage-tag tag-nav"><b>01</b> APPROACH</div>
+            <div class="stage-tag tag-manip"><b>02</b> CLEAR CUPS</div>
+            <div class="stage-crosshair" aria-hidden="true"><span></span><span></span></div>
+          </div>
+          <div class="stage-footer"><span>Real-robot observation</span><span>Approach + clear cups</span></div>
+        </div>
+      </div>
+      <div class="hero-rule" aria-hidden="true"><span></span><span></span><span></span></div>
+      <a class="scroll-cue" href="#signal"><span>Scroll to inspect the signal</span><b aria-hidden="true">&#8595;</b></a>
+    </section>
+
+    <section class="identity-band" aria-label="Project affiliations and marks">
+      <div class="container identity-inner">
+        <span class="identity-kicker">RESEARCH FROM</span>
+        <div class="identity-logos">
+          <div class="identity-item identity-fudan"><img src="assets/logos/fudan_logo.svg" alt="Fudan University seal"><span>Fudan University</span></div>
+          <div class="identity-item identity-cit"><img src="assets/logos/cit_logo.png" alt="CIT Lab"></div>
+          <div class="identity-item identity-fysics"><img src="assets/logos/fysics.png" alt="Fysics AI"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="signal" id="signal" aria-label="Headline results">
+      <div class="container signal-grid">
+        <div class="signal-intro reveal"><span class="section-kicker">AT A GLANCE</span><p>Designed for the full mobile-manipulation loop.</p></div>
+        <div class="signal-stat reveal delay-1"><strong>1.5M<span>+</span></strong><span>MAP-Data episodes</span></div>
+        <div class="signal-stat reveal delay-2"><strong>7.5K</strong><span>hours of navigation</span></div>
+        <div class="signal-stat reveal delay-3"><strong>9.85<span> cm</span></strong><span>MAP-Bench position error</span></div>
+        <div class="signal-stat signal-stat-accent reveal delay-4"><strong>80.0<span>%</span></strong><span>mobile-manipulation success</span></div>
+      </div>
+    </section>
+
+    <section class="section-pad problem" id="problem">
+      <div class="container">
+        <div class="section-heading split-heading reveal">
+          <div><span class="section-kicker">THE GAP</span><h2>Mobile manipulation<br>breaks at the handoff.</h2></div>
+          <p>Navigation needs a wide, forward view and smooth base motion. Manipulation needs close-up cameras and high-frequency end-effector control. Treating both as one undifferentiated action stream wastes data and loses the moment where the robot should stop.</p>
+        </div>
+        <div class="problem-grid">
+          <div class="problem-image media-frame reveal"><img src="assets/hi/intro.png" alt="Overview of mobile manipulation challenges and the UniWAM approach" loading="lazy"><a class="pdf-link" href="assets/papers/UniWAM_Technical_Report.pdf#page=2" target="_blank" rel="noreferrer"><span class="pdf-link-badge" aria-hidden="true">PDF</span><span>Read the paper</span><span class="pdf-link-arrow" aria-hidden="true">&#8599;</span></a></div>
+          <div class="problem-notes reveal delay-1">
+            <div class="note-row"><span class="note-index">01</span><div><h3>Different eyes</h3><p>Forward navigation views and local manipulation views have different visual requirements.</p></div></div>
+            <div class="note-row"><span class="note-index">02</span><div><h3>Different actions</h3><p>Base pose increments and end-effector trajectories live in different action spaces and control rates.</p></div></div>
+            <div class="note-row"><span class="note-index">03</span><div><h3>One missing target</h3><p>Semantic goals say what to reach, but not the exact position and heading where manipulation should begin.</p></div></div>
+            <div class="quote-line">UniWAM keeps a shared world model and gives each stream its own interface.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad approach" id="approach">
+      <div class="container">
+        <div class="section-heading reveal"><span class="section-kicker">THE APPROACH</span><h2>Shared world model.<br><em>Specialized control.</em></h2><p>Each example trains one stream at a time. Navigation and manipulation are packed as separate batch rows, so the same video and action DiTs learn from both without cross-stream attention.</p></div>
+        <div class="architecture-layout">
+          <div class="figure-block reveal"><div class="architecture-figure media-frame"><img src="assets/hi/uniwam.png" alt="UniWAM mixed-stream architecture diagram" loading="lazy"></div><button class="figure-expand" type="button" data-lightbox="assets/hi/uniwam.png" data-caption="UniWAM: navigation and manipulation streams share video and action DiTs.">Open full figure <span aria-hidden="true">&#8599;</span></button></div>
+          <div class="stream-panel reveal delay-1">
+            <div class="stream-panel-top"><span class="section-kicker">STREAM INTERFACE</span><button class="stream-switch" type="button" aria-pressed="false"><span class="switch-dot"></span><span class="switch-label">Show manipulation</span></button></div>
+            <div class="stream-card stream-card-nav is-active"><div class="stream-label"><span class="stream-bullet nav-bullet"></span> Navigation stream</div><h3>Find the pose<br>that enables the task.</h3><p>RGB forward view + language + base state</p><div class="token-caption">Stream inputs + image-plane targets</div><div class="token-line nav-tokens"><span>RGB view</span><span>language</span><span>base state</span><span>MAP / box</span><b>dx&nbsp; dy&nbsp; dtheta</b></div><small>Pose increments over a 32-step horizon</small></div>
+            <div class="stream-card stream-card-manip"><div class="stream-label"><span class="stream-bullet manip-bullet"></span> Manipulation stream</div><h3>See the contact.<br>Execute the intent.</h3><p>Wrist + head views + language + proprioception</p><div class="token-caption">Stream-specific observations</div><div class="token-line manip-tokens"><span>head view</span><span>wrist views</span><span>language</span><span>proprioception</span><b>xyz&nbsp; R6D&nbsp; gripper</b></div><small>Camera-frame end-effector trajectories</small></div>
+            <div class="stream-footnote"><span>Same backbone</span><span>Independent sampling</span><span>Batch-parallel inference</span></div>
+          </div>
+        </div>
+        <div class="architecture-points reveal">
+          <div><b>01</b><h3>Stream-specific inputs</h3><p>Each behavior sees the cameras and state variables it actually needs.</p></div>
+          <div><b>02</b><h3>Independent supervision</h3><p>Navigation-only and manipulation-only data train the same model directly.</p></div>
+          <div><b>03</b><h3>One deployable policy</h3><p>Both streams run independently or in one batch during a real task.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad map-section" id="map">
+      <div class="container">
+        <div class="section-heading split-heading reveal"><div><span class="section-kicker">THE DATA ENGINE</span><h2>Stop where the<br>task starts.</h2></div><p>Manipulation Anchor Pose (MAP) is an explicit base position and heading for the next interaction. The automated pipeline turns large indoor 3D scenes into dense, image-plane supervision for the entire approach.</p></div>
+        <div class="map-feature">
+          <div class="figure-block reveal"><div class="map-figure media-frame"><img src="assets/hi/MAP.png" alt="MAP-Data pipeline from 3D scenes to trajectories and benchmark" loading="lazy"></div><button class="figure-expand" type="button" data-lightbox="assets/hi/MAP.png" data-caption="MAP-Data: curation, geometric annotation, trajectory synthesis, and benchmark splits.">Open full figure <span aria-hidden="true">&#8599;</span></button></div>
+          <div class="map-aside reveal delay-1">
+            <div class="map-callout"><span class="callout-line"></span><div><img class="map-method-logo" src="assets/logos/map.png" alt="Manipulation Anchor Pose"><span class="section-kicker">MAP =</span><h3>Where to stop.<br>How to face.</h3><p>A terminal pose defined by scene geometry, then projected into every observation frame.</p></div></div>
+            <dl class="map-facts"><div><dt>300</dt><dd>held-out targets<br>in MAP-Bench</dd></div><div><dt>109</dt><dd>indoor scenes<br>in evaluation</dd></div><div><dt>15K</dt><dd>evaluation<br>trajectories</dd></div></dl>
+            <div class="map-tags"><span>target box</span><span>MAP projection</span><span>collision-free path</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad demos" id="demos">
+      <div class="container">
+        <div class="section-heading demo-heading split-heading reveal"><div><span class="section-kicker">REAL-ROBOT DEMOS</span><h2>Every source clip.<br>Classified by behavior.</h2></div><p>All full-length real-robot videos from the supplied archive are grouped as pure manipulation, mobile manipulation, and pure navigation. Every clip is included below with an English, source-grounded title.</p></div>
+        <div class="demo-catalog" id="demo-catalog">
+          <section class="demo-category demo-category-manipulation" data-demo-category="manipulation"><div class="demo-category-heading"><div><span class="section-kicker">FIXED-BASE CONTROL</span><h3>Pure manipulation</h3></div><span class="demo-count">9 source clips</span></div><div class="demo-grid demo-grid-manipulation"></div></section>
+          <section class="demo-category demo-category-mobile" data-demo-category="mobile"><div class="demo-category-heading"><div><span class="section-kicker">BASE + ARM CONTROL</span><h3>Mobile manipulation</h3></div><span class="demo-count">3 source clips</span></div><p class="inference-note">Reverse movements were teleoperated; all forward motions were driven by model inference.</p><div class="demo-grid demo-grid-mobile"></div></section>
+          <section class="demo-category demo-category-navigation" data-demo-category="navigation"><div class="demo-category-heading"><div><span class="section-kicker">BASE CONTROL</span><h3>Pure navigation</h3></div><span class="demo-count">21 source clips</span></div><p class="inference-note">Reverse movements were teleoperated; all forward motions were driven by model inference.</p><div class="demo-grid demo-grid-navigation"></div></section>
+        </div>
+        <div class="robot-strip reveal"><span>Evaluated on</span><b>AgileX Cobot Magic</b><i></i><b>AgiBot G2</b><i></i><b>Dual-arm Franka Research 3</b><i></i><b>AgileX single arm</b></div>
+        <div class="figure-block field-figure-block reveal"><div class="field-figure media-frame"><img src="assets/hi/real_world_visualization.png" alt="Representative UniWAM real-robot executions across navigation and manipulation tasks" loading="lazy"></div><button class="figure-expand" type="button" data-lightbox="assets/hi/real_world_visualization.png" data-caption="Representative UniWAM executions across MAP navigation, mobile manipulation, and manipulation.">Open full figure <span aria-hidden="true">&#8599;</span></button></div>
+      </div>
+    </section>
+
+    <section class="section-pad results" id="results">
+      <div class="container">
+        <div class="section-heading split-heading reveal"><div><span class="section-kicker">MAP-BENCH / PRIMARY EVALUATION</span><h2>Manipulation-ready navigation,<br>measured.</h2></div><p>On MAP-Bench, explicit MAP supervision and mixed-stream training reduce both terminal position and heading errors. UniWAM-Scaled reaches the lowest error in every distance range, including long-range approaches.</p></div>
+        <div class="results-layout">
+          <div class="result-highlight reveal"><div class="highlight-label">UNIWAM-SCALED / OVERALL</div><div class="highlight-value">9.85 <small>cm</small></div><p>MAP-Bench position error</p><div class="compare-bar"><span style="width:70%"></span><i style="width:100%"></i></div><div class="bar-legend"><span><b></b> UniWAM-Scaled</span><span><i></i> strongest baseline &middot; 14.1 cm</span></div><div class="highlight-foot">30.1% lower than the strongest external baseline</div></div>
+          <div class="result-highlight result-highlight-coral reveal delay-1"><div class="highlight-label">UNIWAM-SCALED / OVERALL</div><div class="highlight-value">2.30 <small>&deg;</small></div><p>MAP-Bench heading error</p><div class="compare-bar"><span style="width:56%"></span><i style="width:100%"></i></div><div class="bar-legend"><span><b></b> UniWAM-Scaled</span><span><i></i> strongest baseline &middot; 4.11&deg;</span></div><div class="highlight-foot">44.0% lower than the strongest external baseline</div></div>
+          <div class="results-table-wrap reveal delay-2"><div class="table-top"><span>SECONDARY &middot; REAL-ROBOT / 24 TASKS</span><span>lower is better &middot; success higher</span></div><table><thead><tr><th>Model</th><th>MAP nav<br><small>pos / head</small></th><th>Mobile manipulation<br><small>success</small></th><th>Manipulation<br><small>success</small></th></tr></thead><tbody><tr><td>pi<sub>0.5</sub></td><td>23.3 cm / 5.15&deg;</td><td>62.5%</td><td>71.4%</td></tr><tr><td>GR00T N1.7</td><td>18.1 cm / 6.55&deg;</td><td>39.4%</td><td>36.8%</td></tr><tr class="table-base"><td>UniWAM-Base</td><td>15.1 cm / 4.91&deg;</td><td>63.1%</td><td>44.3%</td></tr><tr class="table-win"><td>UniWAM-Scaled</td><td><strong>11.7 cm / 4.25&deg;</strong></td><td><strong>80.0%</strong></td><td>68.9%</td></tr></tbody></table></div>
+        </div>
+        <div class="results-note reveal"><span class="note-index">&#8627;</span><p>On long-range MAP-Bench approaches, UniWAM-Scaled&rsquo;s position error grows by 1.9 times from short to long range, compared with 6.4 times for pi<sub>0.5</sub>.</p></div>
+      </div>
+    </section>
+
+    <section class="section-pad details" id="details">
+      <div class="container">
+        <div class="section-heading reveal"><span class="section-kicker">UNDER THE HOOD</span><h2>Details that make<br>the streams travel.</h2></div>
+        <div class="detail-grid">
+          <article class="detail-item reveal"><span class="detail-num">01</span><div class="detail-icon icon-pose">&#8599;</div><h3>Pose targets, not velocities</h3><p>Navigation predicts smooth relative pose increments, so errors do not accumulate as quickly over a long approach.</p></article>
+          <article class="detail-item reveal delay-1"><span class="detail-num">02</span><div class="detail-icon icon-camera">&#9678;</div><h3>Image-plane supervision</h3><p>Target boxes and projected MAP points keep both streams grounded in what the robot sees right now.</p></article>
+          <article class="detail-item reveal delay-2"><span class="detail-num">03</span><div class="detail-icon icon-frame">&#9633;</div><h3>Camera-frame end effectors</h3><p>Similar visual motions map to similar actions across four embodiments, making mixed data reinforce one another.</p></article>
+        </div>
+        <div class="figure-block detail-visual-block reveal"><div class="detail-visual media-frame"><img src="assets/hi/eef.png" alt="Camera-frame end-effector trajectories across real robot workspaces" loading="lazy"></div><button class="figure-expand" type="button" data-lightbox="assets/hi/eef.png" data-caption="Camera-frame end-effector trajectories and real-robot action views.">Open full figure <span aria-hidden="true">&#8599;</span></button></div>
+      </div>
+    </section>
+
+    <section class="section-pad closing" id="release">
+      <div class="container closing-inner reveal">
+        <div><span class="section-kicker">OPEN SOURCE RELEASE</span><h2>Build the next<br>mobile manipulator.</h2><p>Code, data, and benchmark artifacts will be released by Fudan University and Fysics AI.</p></div>
+        <div class="closing-actions"><a class="button button-primary" href="https://github.com/Fysics-AI/UniWAM" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">&#8599;</span></a><a class="button button-quiet" href="https://huggingface.co/datasets/KeliangLiu2025/UniWAM" target="_blank" rel="noreferrer">Models &amp; data <span aria-hidden="true">&#8599;</span></a></div>
+      </div>
+    </section>
+
+    <section class="section-pad citation" id="cite">
+      <div class="container citation-inner reveal"><div><span class="section-kicker">CITE UNIWAM</span><h2>UniWAM: Unified Mobile Manipulation via Mixed-Stream World-Action Modeling and Manipulation Anchor Pose Supervision</h2><p><strong>Wei Xue, Keliang Liu</strong>, Mingzhang Cui, Jinhua Xie, Jianan Hou, Jingcheng Lu, Lintao Wang, Kaixiang Qiu, Yizhou Liu, Xinghai Ye, Jinghang Han, Mingcheng Li, Jie Gu, Shunli Wang, Dingkang Yang, Lihua Zhang</p></div><button class="copy-button" type="button" id="copy-citation"><span class="copy-icon" aria-hidden="true">COPY</span><span class="copy-label">Copy BibTeX</span></button></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><div class="footer-brand"><img src="assets/report/uniwam-logo-transparent.png" alt="UniWAM"><span>Fudan University &times; Fysics AI</span></div><div class="footer-links"><a href="#top">Back to top &#8593;</a><a href="assets/papers/UniWAM_Technical_Report.pdf" target="_blank" rel="noreferrer">Paper PDF &#8599;</a><a href="https://github.com/Fysics-AI/UniWAM" target="_blank" rel="noreferrer">GitHub Code &#8599;</a><a href="https://huggingface.co/datasets/KeliangLiu2025/UniWAM" target="_blank" rel="noreferrer">HF Dataset &#8599;</a><a href="https://huggingface.co/Fysics-AI/MAP-Bench" target="_blank" rel="noreferrer">HF MAP-Bench &#8599;</a></div><span class="footer-date">&copy; 2026</span></div></footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" type="button" aria-label="Close image">&#215;</button><figure><img src="" alt=""><figcaption></figcaption></figure></div>
+  <script src="script.js?v=20260929-1"></script>
+</body>
+</html>
