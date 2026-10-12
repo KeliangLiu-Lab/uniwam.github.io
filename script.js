@@ -83,11 +83,14 @@ lightbox?.querySelector('.lightbox-close').addEventListener('click', closeLightb
 lightbox?.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && lightbox?.classList.contains('is-open')) closeLightbox(); });
 
-const citation = `@article{xue2026uniwam,
-  title   = {UniWAM: Unified Mobile Manipulation via Mixed-Stream World-Action Modeling and Manipulation Anchor Pose Supervision},
-  author  = {Xue, Wei and Liu, Keliang and Cui, Mingzhang and Xie, Jinhua and Hou, Jianan and Lu, Jingcheng and Wang, Lintao and Qiu, Kaixiang and Liu, Yizhou and Ye, Xinghai and Han, Jinghang and Li, Mingcheng and Gu, Jie and Wang, Shunli and Yang, Dingkang and Zhang, Lihua},
-  year    = {2026},
-  note    = {Technical report}
+const citation = `@misc{xue2026uniwamtechnicalreportunified,
+  title         = {UniWAM Technical Report: Unified Mobile Manipulation via Mixed-Stream World-Action Modeling and Manipulation Anchor Pose Supervision},
+  author        = {Wei Xue and Keliang Liu and Mingzhang Cui and Jinhua Xie and Jinjie Wei and Jianan Hou and Jingcheng Lu and Lintao Wang and Kaixiang Qiu and Yizhou Liu and Xinghai Ye and Jinghang Han and Mingcheng Li and Jie Gu and Shunli Wang and Lihua Zhang and Dingkang Yang},
+  year          = {2026},
+  eprint        = {2609.39388},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url           = {https://arxiv.org/abs/2609.39388}
 }`;
 const copyButton = document.querySelector('#copy-citation');
 copyButton?.addEventListener('click', async () => {
