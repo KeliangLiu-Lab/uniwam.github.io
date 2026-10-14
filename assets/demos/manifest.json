@@ -81,6 +81,15 @@
     "poster": "assets/demos/manipulation/manipulation-09.jpg"
   },
   {
+    "id": "manipulation-10",
+    "category": "manipulation",
+    "category_label": "Pure manipulation",
+    "label": "Place assorted tabletop objects into a tray",
+    "platform": "",
+    "video": "https://huggingface.co/datasets/KeliangLiu2025/UniWAM/resolve/main/assets/demos/manipulation/manipulation-10.mp4",
+    "poster": "assets/demos/manipulation/manipulation-10.jpg"
+  },
+  {
     "id": "mobile-01",
     "category": "mobile",
     "category_label": "Mobile manipulation",

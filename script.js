@@ -45,7 +45,7 @@ const demoTitle = (demo) => {
   return demo.category === 'mobile' ? 'Mobile manipulation demonstration' : 'Fixed-base manipulation demonstration';
 };
 const mediaType = (path) => /\.mov$/i.test(path) ? 'video/quicktime' : 'video/mp4';
-fetch('assets/demos/manifest.json?v=20260929-1')
+fetch('assets/demos/manifest.json?v=20261014-1')
   .then((response) => response.json())
   .then((demos) => {
     demos.forEach((demo) => {
