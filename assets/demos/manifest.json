@@ -84,10 +84,29 @@
     "id": "manipulation-10",
     "category": "manipulation",
     "category_label": "Pure manipulation",
-    "label": "Place assorted tabletop objects into a tray",
+    "label": "Pick up and place anything",
     "platform": "",
     "video": "https://huggingface.co/datasets/KeliangLiu2025/UniWAM/resolve/main/assets/demos/manipulation/manipulation-10.mp4",
-    "poster": "assets/demos/manipulation/manipulation-10.jpg"
+    "poster": "assets/demos/manipulation/manipulation-10-handover.jpg",
+    "description": "Pick up and place objects, and hand the held object to a person when they extend a hand.",
+    "featured": true,
+    "feature_order": 2,
+    "feature_tag": "Interactive manipulation",
+    "duration_label": "5:19"
+  },
+  {
+    "id": "manipulation-11",
+    "category": "manipulation",
+    "category_label": "Pure manipulation",
+    "label": "Long-horizon coffee preparation",
+    "description": "Complete a long-horizon coffee-making task.",
+    "platform": "",
+    "video": "https://huggingface.co/datasets/KeliangLiu2025/UniWAM/resolve/main/assets/demos/manipulation/manipulation-11.mp4",
+    "poster": "assets/demos/manipulation/manipulation-11.jpg",
+    "featured": true,
+    "feature_order": 1,
+    "feature_tag": "Long-horizon task",
+    "duration_label": "1:14"
   },
   {
     "id": "mobile-01",
