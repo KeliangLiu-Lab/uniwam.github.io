@@ -45,7 +45,7 @@ const demoTitle = (demo) => {
   return demo.category === 'mobile' ? 'Mobile manipulation demonstration' : 'Fixed-base manipulation demonstration';
 };
 const mediaType = (path) => /\.mov$/i.test(path) ? 'video/quicktime' : 'video/mp4';
-fetch('assets/demos/manifest.json?v=20261030-1')
+fetch('assets/demos/manifest.json?v=20261031-mobile-audio-cut-1')
   .then((response) => response.json())
   .then((demos) => {
     const featuredDemos = demos.filter((demo) => demo.featured).sort((a, b) => a.feature_order - b.feature_order);
@@ -58,8 +58,9 @@ fetch('assets/demos/manifest.json?v=20261030-1')
         grid.insertAdjacentHTML('beforeend', `<article class="demo-card demo-card-featured" data-demo-id="${escapeHtml(demo.id)}"><div class="featured-card-topline"><span>${escapeHtml(demo.feature_tag)}</span><span>${demo.duration_label ? `${escapeHtml(demo.duration_label)} &middot; ` : ''}Full-length video</span></div><div class="demo-video"><video controls playsinline preload="metadata" poster="${escapeHtml(demo.poster)}" aria-label="${escapeHtml(title)}" aria-describedby="${escapeHtml(demo.id)}-description"><source src="${escapeHtml(demo.video)}" type="${mediaType(demo.video)}"></video></div><div class="featured-card-caption"><h4>${escapeHtml(title)}</h4><p id="${escapeHtml(demo.id)}-description">${escapeHtml(demo.description)}</p></div></article>`);
         return;
       }
+      const clipNote = demo.id === 'mobile-01' ? '4:09 clip / audio removed' : demo.id === 'mobile-02' ? 'Full-length clip / audio removed' : 'full source clip';
       const platform = demo.platform === 'AGX' ? 'AgileX Cobot Magic' : demo.platform === 'G2' ? 'AgiBot G2' : demo.category === 'mobile' ? 'AgileX Cobot Magic' : 'Real-robot clip';
-      grid.insertAdjacentHTML('beforeend', `<article class="demo-card reveal" data-demo-id="${escapeHtml(demo.id)}"><div class="demo-video"><video controls playsinline preload="metadata" poster="${escapeHtml(demo.poster)}" aria-label="${escapeHtml(title)}"><source src="${escapeHtml(demo.video)}" type="${mediaType(demo.video)}"></video><span class="demo-badge ${categoryBadge[demo.category]}">${escapeHtml(categoryName[demo.category])}</span></div><div class="demo-caption"><div><span class="demo-index">${escapeHtml(demo.id.split('-').pop().padStart(2, '0'))}</span><h3>${escapeHtml(title)}</h3></div><p>${escapeHtml(platform)}<br><span>full source clip</span></p></div></article>`);
+      grid.insertAdjacentHTML('beforeend', `<article class="demo-card reveal" data-demo-id="${escapeHtml(demo.id)}"><div class="demo-video"><video controls playsinline preload="metadata" poster="${escapeHtml(demo.poster)}" aria-label="${escapeHtml(title)}"><source src="${escapeHtml(demo.video)}" type="${mediaType(demo.video)}"></video><span class="demo-badge ${categoryBadge[demo.category]}">${escapeHtml(categoryName[demo.category])}</span></div><div class="demo-caption"><div><span class="demo-index">${escapeHtml(demo.id.split('-').pop().padStart(2, '0'))}</span><h3>${escapeHtml(title)}</h3></div><p>${escapeHtml(platform)}<br><span>${escapeHtml(clipNote)}</span></p></div></article>`);
     });
     document.querySelectorAll('.demo-card.reveal').forEach((item) => revealObserver.observe(item));
   })

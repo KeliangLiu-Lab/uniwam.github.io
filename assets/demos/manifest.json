@@ -114,7 +114,7 @@
     "category_label": "Mobile manipulation",
     "label": "Sort colored cubes into trays",
     "platform": "AgileX Cobot Magic",
-    "video": "https://huggingface.co/datasets/KeliangLiu2025/UniWAM/resolve/main/assets/demos/mobile/mobile-01.mp4",
+    "video": "https://huggingface.co/datasets/KeliangLiu2025/UniWAM/resolve/48d10eda8b5a8ab77b7d70e3eb4bcbe7296d0c41/assets/demos/mobile/mobile-01.mp4",
     "poster": "assets/demos/mobile/mobile-01.jpg"
   },
   {
@@ -123,7 +123,7 @@
     "category_label": "Mobile manipulation",
     "label": "Place items in the storage box",
     "platform": "AgileX Cobot Magic",
-    "video": "https://huggingface.co/datasets/KeliangLiu2025/UniWAM/resolve/main/assets/demos/mobile/mobile-02.mp4",
+    "video": "https://huggingface.co/datasets/KeliangLiu2025/UniWAM/resolve/48d10eda8b5a8ab77b7d70e3eb4bcbe7296d0c41/assets/demos/mobile/mobile-02.mp4",
     "poster": "assets/demos/mobile/mobile-02.jpg"
   },
   {
